@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :messages
+  resources :projects
+  resources :messages, only: %i[ new create ]
   devise_for :users
-  
-  root "messages#index"
+
+  root "projects#index"
 end

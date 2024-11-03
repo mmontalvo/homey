@@ -1,24 +1,30 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Homey code challenge
 
-Things you may want to cover:
+In this README I am going to explain the assumptions made duriong the development process and the questions I would have raised to my colleagues.
 
-* Ruby version
+## Current design
 
-* System dependencies
+The app contains the minimum list of elements to comply with the requirements.
 
-* Configuration
+Regarding `models`, it has:
+- User: based on `Devise` gem. bare minimum setup e.g. no additional fields after installation
+- Project: just `title` and `status` fields
+- Message: `body` as the main attribute for this model
+- Audit: to keep track of the changes. It has `project` as the principal reference, so all audits related to a project can be easily queried
 
-* Database creation
+On the `controllers` side, both `projects` and `messages` were scaffolded and specifically `messages` has been limited to only `new` and `create` actions to simplify the development.
 
-* Database initialization
+## Event Driven approach
 
-* How to run the test suite
+The main topic related to the development of this solutions was the aim to build an Event Driven application.
 
-* Services (job queues, cache servers, search engines, etc.)
+Every time an `event`we want to keep track happens in the app, we will create an `Audit` record and link it to the project it belongs, so we can easily build a trace of the events that happened related to a given project.
 
-* Deployment instructions
+In this case it is achieved by using `RailsEventStore` defining the handling of the event in a background job that will take care of creating the relevant Audit and broadcasting that creation via ActionCable, performing live updates in client's browser.
 
-* ...
+## Questions to be made
+
+- there is no UI / UX done due to the lack of instructions. It would be nice to get some designs or maybe define a frontend framework to use.
+- the previous decision would also have an impact in how controllers and views behave e.g. it is decided to have everything (ability to post a comment and project status) on the same screen.

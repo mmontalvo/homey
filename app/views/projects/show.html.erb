@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @project %>
+
+<div>
+  <%= link_to "Edit this project", edit_project_path(@project) %> |
+  <%= link_to "Back to projects", projects_path %> |
+  <%= link_to "New message", new_message_path(project_id: @project.id) %>
+
+  <%= button_to "Destroy this project", @project, method: :delete %>
+</div>
+
+<h2>List audits</h2>
+
+<div id='list-audits'>
+  <% @project.audits.each do |audit| %>
+    <article class="message-line">
+      <span class="user"><%= audit.user.email %></span>
+      <span class="comment"><%= audit.comment %></span>
+      <span class="changes"><%= audit.audited_changes %></span>
+    </article>
+  <% end %>
+</div>

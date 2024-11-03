@@ -1,0 +1,5 @@
+## YAML Template.
+---
+:concurrency: 1
+:queues:
+  - default
