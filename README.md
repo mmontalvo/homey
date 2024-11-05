@@ -28,3 +28,11 @@ In this case it is achieved by using `RailsEventStore` defining the handling of 
 
 - there is no UI / UX done due to the lack of instructions. It would be nice to get some designs or maybe define a frontend framework to use.
 - the previous decision would also have an impact in how controllers and views behave e.g. it is decided to have everything (ability to post a comment and project status) on the same screen.
+
+## Deployment
+
+Application is deployed to Heroku and available at https://homey-36e96b9d1a4b.herokuapp.com/
+
+To access the app you can simply login by using the following credentials:
+- user: test@test.com
+- password: admin123
