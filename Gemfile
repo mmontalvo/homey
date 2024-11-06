@@ -46,6 +46,6 @@ gem "devise", "~> 4.9"
 gem "faker", "~> 3.5"
 
 gem "rails_event_store"
-gem "sidekiq", "<7"
+gem "sidekiq", "<8"
 gem "sidekiq-unique-jobs", "~> 7.1"
 gem "ruby_event_store-sidekiq_scheduler"
